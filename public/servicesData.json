@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Cardiac Surgery",
+        "imgURL": "https://i.ibb.co/Z8Wjgkp/icon-1.png",
+        "shortDescription": "Cardiac surgery describes any surgical procedure that involves the heart.",
+        "description": "Cardiovascular surgery, also referred to as cardiac surgery or heart surgery, describes any surgical procedure that involves the heart, or the blood vessels that carry blood to and from the heart.",
+        "key": "1"
+    },
+    {
+        "title": "Neurological Surgery",
+        "imgURL": "https://i.ibb.co/RhC9sCL/icon-3.png",
+        "shortDescription": "Neurological Surgery is described as a surgery for brain only with medicine.",
+        "description": "Neurological Surgery is a discipline of medicine and that specialty of surgery that provides the operative and nonoperative management (i.e., critical care, prevention, diagnosis, evaluation, treatment, and rehabilitation) of disorders of the central, peripheral, and autonomic nervous systems, including their supporting structures and vascular supply.",
+        "key": "2"
+    },
+    {
+        "title": "Thoracic surgery",
+        "imgURL": "https://i.ibb.co/Y75VmDs/icon-4.png",
+        "shortDescription": "Thoracic surgery refers to operations on organs in the chest.",
+        "description": "Thoracic surgery refers to operations on organs in the chest, including the heart, lungs and esophagus. Examples of thoracic surgery include coronary artery bypass surgery, heart transplant, lung transplant and removal of parts of the lung affected by cancer.",
+        "key": "3"
+    },
+    {
+        "title": "Orthopedic surgery",
+        "imgURL": "https://i.ibb.co/17BK6VL/icon-2.png",
+        "shortDescription": "Orthopedic surgery is performed on the musculoskeletal system in case of injuries.",
+        "description": "Orthopedic surgery is performed on the musculoskeletal system in case of injuries, trauma, or various conditions. The musculoskeletal system includes bones, joints, and adjacent soft tissues: muscles - protecting and allowing movement of bones and joints.",
+        "key": "4"
+    },
+    {
+        "title": "Vascular surgery",
+        "imgURL": "https://i.ibb.co/YBj0ynQ/icon-5.png",
+        "shortDescription": "Vascular surgery is a surgical subspecialty in which diseases of the vascular system.",
+        "description": "Vascular surgery is a surgical subspecialty in which diseases of the vascular system, or arteries, veins and lymphatic circulation, are managed by medical therapy, minimally-invasive catheter procedures, and surgical reconstruction.",
+        "key": "5"
+    },
+    {
+        "title": "General Surgery",
+        "imgURL": "https://i.ibb.co/vHvyk6S/icon-6.png",
+        "shortDescription": "General Surgery is a discipline of surgery having a central core of knowledge embracing anatomy.",
+        "description": "General Surgery is a discipline of surgery having a central core of knowledge embracing anatomy, physiology, metabolism, immunology, nutrition, pathology, wound healing, shock and resuscitation, intensive care, and neoplasia, which are common to all surgical specialties.",
+        "key": "6"
+    }
+]

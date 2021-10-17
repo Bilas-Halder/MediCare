@@ -1,0 +1,16 @@
+.nav-btn{
+    position: relative;
+}
+.nav-btn::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 12%;
+    height: 2px;
+    width: 0%;
+    background-color: #43d5cb;
+    transition: all 0.3s ease-in;
+}
+.nav-btn:hover::after{
+    width: 80%;
+}

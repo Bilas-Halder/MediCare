@@ -1,0 +1,29 @@
+.img-div{
+    width: 65px;
+    height: 65px;
+    margin-right: 10px;
+    transition: all 0.5s ease-in;
+}
+.service-text{
+    width: 250px;
+}
+.col-customize{
+    padding: 30px 0px;
+    color: #333333;
+}
+
+.service-navlink:hover .service-title{
+    color: #6d6d6d;
+}
+.service-navlink:hover .img-div{
+    animation: hoverEffect 0.5s ease-in 2;
+}
+
+@keyframes hoverEffect {
+    50% {
+        margin-top: -30px;
+    }
+    100%{
+        margin-top: 0px;
+    }
+}
