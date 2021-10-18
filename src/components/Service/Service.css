@@ -12,11 +12,19 @@
     color: #333333;
 }
 
-.service-navlink:hover .service-title{
+.service-title:hover{
     color: #6d6d6d;
 }
 .service-navlink:hover .img-div{
     animation: hoverEffect 0.5s ease-in 2;
+}
+.view-more-btn{
+    font-size: 1rem;
+    font-weight: 400;
+}
+.view-more-btn:hover{
+   padding: 5px 23px 6px 23px;
+   font-weight: 500;
 }
 
 @keyframes hoverEffect {

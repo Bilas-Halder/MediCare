@@ -5,9 +5,12 @@ import { NavLink } from 'react-router-dom';
 
 const Service = ({ service }) => {
     const { title, imgURL, shortDescription } = service;
+    const btnStyle = {
+
+    }
     return (
         <Col xm={12} sm={6} lg={4} className='col-customize'>
-            <NavLink className="service-navlink" to="/home">
+            <div className="service-navlink">
                 <div className="d-flex align-items-center justify-content-between mx-3 mx-sm-0">
                     <div className="img-div">
                         <img className="w-100" src={imgURL} alt="img" />
@@ -17,9 +20,10 @@ const Service = ({ service }) => {
                         <p className="color-gray">
                             {shortDescription}
                         </p>
+                        <NavLink className="primary-btn view-more-btn mt-3" to="/home" >View More</NavLink>
                     </div>
                 </div>
-            </NavLink>
+            </div>
         </Col>
     );
 };
