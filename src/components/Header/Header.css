@@ -14,3 +14,10 @@
 .nav-btn:hover::after{
     width: 80%;
 }
+
+.nav-logout{
+    border: none;
+    color: #0d6efd;
+    background-color: #ffdead00;
+    padding: 0.5rem 1rem;
+}

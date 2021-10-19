@@ -1,0 +1,14 @@
+.feedback{
+    width: 100%;
+    height: 300px;
+    background-color: #e6fffd;
+    margin-top: 80px;
+    margin-bottom: -6rem;
+    
+}
+.form-size{
+    width: min(90%, 350px);;
+}
+.submit-btn{
+    border: none;
+}

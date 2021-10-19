@@ -1,11 +1,16 @@
 import React from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { useLocation } from 'react-router';
+import { useHistory } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import { useAuth } from '../../hooks/useAuth';
 import "./Header.css";
 
 const Header = () => {
-    const { user, logOut } = useAuth();
+    const { user, logout } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
+
     return (
         <Navbar fixed='top' bg="light" expand="lg">
             <Container>
@@ -21,8 +26,13 @@ const Header = () => {
                     <Nav.Link className="text-center nav-btn" as={HashLink} to="/aboutus">About Us</Nav.Link>
 
                     {
+                        user?.email && <>
+                            <Nav.Link className="text-center nav-btn" as={HashLink} to="/home">{user.displayName}</Nav.Link>|</>
+                    }
+
+                    {
                         user?.email ?
-                            <Nav.Link className="text-center nav-btn" as={HashLink} onclick={logOut} to="/home">Log Out</Nav.Link>
+                            <button className="text-center nav-btn nav-logout" onClick={() => logout(location.pathname + location.hash, history)} >Log Out</button>
                             :
                             <Nav.Link className="text-center nav-btn" as={HashLink} to="/login">Log In</Nav.Link>
                     }

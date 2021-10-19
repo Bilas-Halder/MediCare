@@ -4,12 +4,11 @@ import useServicesData from '../../hooks/useServicesData';
 import Service from '../Service/Service';
 
 const Services = () => {
-    const x = [1, 2, 3, 4, 5, 6];
     const services = useServicesData();
 
     return (
-        <div id="services" style={{ marginTop: "60px" }}>
-            <p className="text-center" style={{ fontSize: "2rem", fontWeight: "500" }}>Our Best Services</p>
+        <div id="services">
+            <p className="text-center" style={{ fontSize: "2rem", fontWeight: "500", paddingTop: "60px" }}>Our Best Services</p>
             <Container>
                 <Row>
                     {
