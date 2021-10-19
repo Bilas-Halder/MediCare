@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { useAuth } from "./useAuth";
 
 const useServicesData = () => {
-    const [servicesData, setServicesData] = useState([]);
+    const { servicesData, setServicesData } = useAuth();
     useEffect(() => {
         fetch("./servicesData.json")
             .then(res => res.json())

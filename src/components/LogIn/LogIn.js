@@ -1,24 +1,58 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./LogIn.css";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useAuth } from '../../hooks/useAuth';
 
+export const validEmail = new RegExp(
+    '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
+);
+export const validPassword = new RegExp('(?=^.{6,}$)');
+
+
 const LogIn = () => {
 
-    const { user, setLogged, logInUsingEmail, logInUsingGoogle } = useAuth();
-    const tempUser = {};
+    const { user, setUser, logged, setLogged, logInUsingEmail, logInUsingGoogle } = useAuth();
+
+    const [emailErr, setEmailErr] = useState(false);
+    const [passErr, setPassErr] = useState(false);
 
     const history = useHistory();
     const location = useLocation();
     const path = location.state?.from?.pathname;
 
 
-    const logInHandler = (e) => {
+    const logInUsingEmailHandler = (e) => {
         e.preventDefault();
+        const formElement = e.target.parentElement;
+        const email = formElement.children[0].children[0].value;
+        const password = formElement.children[1].children[0].value;
 
+        if (validEmail.test(email)) {
+            console.log("valid email");
+        }
+        else {
+            console.log("invalid email", email);
+        }
+        if (validPassword.test(password)) {
+            console.log("valid password");
+        }
+        else {
+            console.log("invalid password", password);
+        }
+
+
+        // logInUsingEmail(email, password)
+        //     .then((userCredential) => {
+        //         const user = userCredential.user;
+        //         setUser(user);
+        //         setLogged(true);
+        //         history.push(path);
+        //         formElement.reset();
+        //     })
     }
+
     const logInUsingGoogleHandler = () => {
         logInUsingGoogle()
             .then(result => {
@@ -29,6 +63,7 @@ const LogIn = () => {
             })
             .catch(err => console.log(err));
     }
+
 
 
     return (
@@ -45,23 +80,15 @@ const LogIn = () => {
                 }
                 <form>
                     <div className="input-field">
-                        <input
-                            onBlur={(e) => {
-                                tempUser.email = e.target.value;
-                            }}
-                            type="text" required />
+                        <input type="text" required />
                         <label>Email or Username</label>
                     </div>
                     <div className="input-field">
-                        <input
-                            onBlur={(e) => {
-                                tempUser.password = e.target.value;
-                            }}
-                            className="password" type="password" required />
+                        <input className="password" type="password" required />
                         <span className="show">SHOW</span>
                         <label>Password</label>
                     </div>
-                    <button className="primary-btn login-btn" onClick={logInHandler}>Log In</button>
+                    <button className="primary-btn login-btn" onClick={logInUsingEmailHandler}>Log In</button>
                 </form>
                 <div className="auth">
                     Or log in with
@@ -75,7 +102,13 @@ const LogIn = () => {
                     </button>
                 </div>
                 <div className="signup">
-                    Not a member? <NavLink to="/signup"> Signup now</NavLink>
+                    Not a member?
+                    <NavLink to={
+                        {
+                            pathname: '/signup',
+                            state: { from: path }
+                        }
+                    }> Signup now</NavLink>
                 </div>
             </div>
         </div>

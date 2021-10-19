@@ -1,30 +1,47 @@
 import React, { useState } from 'react';
 import "../LogIn/LogIn.css";
 import "./SignUp.css";
+import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
 import { useAuth } from '../../hooks/useAuth';
 
-const SignUp = ({ logOutHandler, logInHandler }) => {
-    const tempUser = {
-        name: "",
-        email: "",
-        password: "",
-        rpass: ""
-    };
+const SignUp = () => {
 
-    const { signUpUsingEmail, verifyEmail } = useAuth();
+
+    const { user, setUser, signUpUsingEmail, verifyEmail, updateName, setLogged } = useAuth();
+
+
+    const history = useHistory();
+    const location = useLocation();
+    const path = location.state?.from;
+
 
     const [showing, setShowing] = useState(false);
     const isShow = () => {
         setShowing(!showing);
     }
     const signUpHandler = e => {
-        const formElement = e.target.parentElement.parentElement;
         e.preventDefault();
+        const formElement = e.target.parentElement;
+        const name = formElement.children[0].children[0].value;
+        const email = formElement.children[1].children[0].value;
+        const password = formElement.children[2].children[0].value;
+        const rpassword = formElement.children[3].children[0].value;
 
-        signUpUsingEmail(tempUser?.name, tempUser?.email, tempUser?.password, formElement);
-        // sending formElement for resetting if the signUp was successFull
+
+
+        signUpUsingEmail(email, password)
+            .then((userCredential) => {
+                updateName(name).then(() => {
+                    setUser(userCredential.user);
+                    setLogged(true);
+                    history.push(path);
+                    formElement.reset();
+                });
+            })
+            .catch(err => console.log(err));
     }
 
     return (
@@ -33,38 +50,22 @@ const SignUp = ({ logOutHandler, logInHandler }) => {
                 <div className="log-in-header">SignUp Form</div>
                 <form>
                     <div className="input-field">
-                        <input
-                            onBlur={(e) => {
-                                tempUser.name = e.target.value;
-                            }}
-                            type="text" required />
+                        <input type="text" required />
                         <label>Full Name</label>
                     </div>
                     <div className="input-field">
-                        <input
-                            onBlur={(e) => {
-                                tempUser.email = e.target.value;
-                            }}
-                            type="text" required />
+                        <input type="text" required />
                         <label>Email or Username</label>
                     </div>
                     <div className="input-field">
-                        <input
-                            onBlur={(e) => {
-                                tempUser.password = e.target.value;
-                            }}
-                            className="password" type={showing ? "text" : "password"} required />
+                        <input className="password" type={showing ? "text" : "password"} required />
                         <span className="show">
                             <button onClick={isShow}>SHOW</button>
                         </span>
                         <label>Password</label>
                     </div>
                     <div className="input-field">
-                        <input
-                            onBlur={(e) => {
-                                tempUser.rpass = e.target.value;
-                            }}
-                            className="password" type={showing ? "text" : "password"} required />
+                        <input className="password" type={showing ? "text" : "password"} required />
                         <span className="show">
                             <button onClick={isShow}>SHOW</button>
                         </span>

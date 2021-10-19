@@ -7,6 +7,8 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [logged, setLogged] = useState(false);
     const [error, setError] = useState('');
+    const [servicesData, setServicesData] = useState([]);
+
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -17,12 +19,32 @@ const useFirebase = () => {
     };
 
 
+    const updateName = name => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+        });
+    }
+
+    // code for email sign in and sign Up
+    const signUpUsingEmail = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
+
+    const logInUsingEmail = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    };
+
+
+
 
     useEffect(() => {
         // if the user is signed In then setting the user
-        onAuthStateChanged(auth, user => {
-            if (user) {
-                setUser(user);
+        onAuthStateChanged(auth, currentUser => {
+            if (currentUser) {
+                setUser(currentUser);
+            }
+            else if (auth.currentUser) {
+                setUser(auth.currentUser);
             }
         })
     }, [auth, logged]);
@@ -40,9 +62,14 @@ const useFirebase = () => {
     return {
         user,
         logged,
+        servicesData,
+        setServicesData,
         setUser,
         setLogged,
+        updateName,
+        signUpUsingEmail,
         logInUsingGoogle,
+        logInUsingEmail,
         logout
     };
 };

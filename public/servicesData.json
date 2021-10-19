@@ -4,6 +4,7 @@
         "iconURL": "https://i.ibb.co/Z8Wjgkp/icon-1.png",
         "shortDescription": "Cardiac surgery describes any surgical procedure that involves the heart.",
         "description": "Cardiovascular surgery, also referred to as cardiac surgery or heart surgery, describes any surgical procedure that involves the heart, or the blood vessels that carry blood to and from the heart.",
+        "imgURL": "https://nyulangone.org/files/neurosurgeons-performing-brain-surgery.jpg",
         "key": "1"
     },
     {
@@ -11,6 +12,7 @@
         "iconURL": "https://i.ibb.co/RhC9sCL/icon-3.png",
         "shortDescription": "Neurological Surgery is described as a surgery for brain only with medicine.",
         "description": "Neurological Surgery is a discipline of medicine and that specialty of surgery that provides the operative and nonoperative management (i.e., critical care, prevention, diagnosis, evaluation, treatment, and rehabilitation) of disorders of the central, peripheral, and autonomic nervous systems, including their supporting structures and vascular supply.",
+        "imgURL": "https://i.ibb.co/gJG9ksy/download.jpg",
         "key": "2"
     },
     {
@@ -18,6 +20,7 @@
         "iconURL": "https://i.ibb.co/Y75VmDs/icon-4.png",
         "shortDescription": "Thoracic surgery refers to operations on organs in the chest.",
         "description": "Thoracic surgery refers to operations on organs in the chest, including the heart, lungs and esophagus. Examples of thoracic surgery include coronary artery bypass surgery, heart transplant, lung transplant and removal of parts of the lung affected by cancer.",
+        "imgURL": "https://mc-42b990dd-5dae-4647-b81e-424724-cdn-endpoint.azureedge.net/-/media/blogs/2020/david-beckman-md-heart-surgery-or-2020.jpg?rev=cb6aff34ef6b41e4af73fb584b3ce87f&h=300&w=450&la=en&hash=672BEA4B29405755631D5D4FDB519273",
         "key": "3"
     },
     {
@@ -25,6 +28,7 @@
         "iconURL": "https://i.ibb.co/17BK6VL/icon-2.png",
         "shortDescription": "Orthopedic surgery is performed on the musculoskeletal system in case of injuries.",
         "description": "Orthopedic surgery is performed on the musculoskeletal system in case of injuries, trauma, or various conditions. The musculoskeletal system includes bones, joints, and adjacent soft tissues: muscles - protecting and allowing movement of bones and joints.",
+        "imgURL": "https://www.international-patients.com/wp-content/uploads/2020/03/shutterstock_1220489041.jpg",
         "key": "4"
     },
     {
@@ -32,6 +36,7 @@
         "iconURL": "https://i.ibb.co/YBj0ynQ/icon-5.png",
         "shortDescription": "Vascular surgery is a surgical subspecialty in which diseases of the vascular system.",
         "description": "Vascular surgery is a surgical subspecialty in which diseases of the vascular system, or arteries, veins and lymphatic circulation, are managed by medical therapy, minimally-invasive catheter procedures, and surgical reconstruction.",
+        "imgURL": "https://media.gettyimages.com/photos/pediatric-heart-surgery-picture-id466458672?s=612x612",
         "key": "5"
     },
     {
@@ -39,6 +44,7 @@
         "iconURL": "https://i.ibb.co/vHvyk6S/icon-6.png",
         "shortDescription": "General Surgery is a discipline of surgery having a central core of knowledge embracing anatomy.",
         "description": "General Surgery is a discipline of surgery having a central core of knowledge embracing anatomy, physiology, metabolism, immunology, nutrition, pathology, wound healing, shock and resuscitation, intensive care, and neoplasia, which are common to all surgical specialties.",
+        "imgURL": "https://thedo.osteopathic.org/wp-content/uploads/2018/10/Surgery1.jpg",
         "key": "6"
     }
 ]
