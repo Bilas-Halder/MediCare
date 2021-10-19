@@ -1,7 +1,13 @@
 import React from 'react';
 
-const useErrorIcons = () => {
-    return <i className="fas fa-exclamation-triangle"></i>;
-};
+const errStyle = {
+    color: "#e10000",
+    fontSize: "1rem"
+}
 
-export default useErrorIcons;
+export const useErrorIcon = () => {
+    return <i style={errStyle} class="fas fa-exclamation-circle"></i>;
+};
+export const useTriangleErrorIcon = () => {
+    return <i style={errStyle} className="fas fa-exclamation-triangle"></i>;
+}

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useAuth } from '../../hooks/useAuth';
+import { useErrorIcon } from '../../hooks/useicons/useIcons';
 
 export const validEmail = new RegExp(
     '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
@@ -15,12 +16,22 @@ const LogIn = () => {
 
     const { user, setUser, logged, setLogged, logInUsingEmail, logInUsingGoogle } = useAuth();
 
-    const [emailErr, setEmailErr] = useState(false);
-    const [passErr, setPassErr] = useState(false);
-
     const history = useHistory();
     const location = useLocation();
     const path = location.state?.from?.pathname;
+
+
+    const [emailErr, setEmailErr] = useState(false);
+    const [passErr, setPassErr] = useState(false);
+
+    const errorIcon = useErrorIcon();
+    const errMsgStyle = {
+        textAlign: "left",
+        marginTop: "-18px",
+        marginBottom: "18px",
+        fontSize: "0.9rem",
+        color: "#d70000"
+    };
 
 
     const logInUsingEmailHandler = (e) => {
@@ -29,28 +40,36 @@ const LogIn = () => {
         const email = formElement.children[0].children[0].value;
         const password = formElement.children[1].children[0].value;
 
-        if (validEmail.test(email)) {
-            console.log("valid email");
+
+        if (!validEmail.test(email) && !validPassword.test(password)) {
+            setEmailErr(true);
+            setPassErr(false);
+            return;
+        }
+        else if (!validEmail.test(email)) {
+            setEmailErr(true);
+            setPassErr(false);
+            return;
+        }
+        else if (!validPassword.test(password)) {
+            setEmailErr(false);
+            setPassErr(true);
+            return;
         }
         else {
-            console.log("invalid email", email);
-        }
-        if (validPassword.test(password)) {
-            console.log("valid password");
-        }
-        else {
-            console.log("invalid password", password);
+            setEmailErr(false);
+            setPassErr(false);
         }
 
 
-        // logInUsingEmail(email, password)
-        //     .then((userCredential) => {
-        //         const user = userCredential.user;
-        //         setUser(user);
-        //         setLogged(true);
-        //         history.push(path);
-        //         formElement.reset();
-        //     })
+        logInUsingEmail(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                setUser(user);
+                setLogged(true);
+                history.push(path);
+                formElement.reset();
+            })
     }
 
     const logInUsingGoogleHandler = () => {
@@ -83,11 +102,17 @@ const LogIn = () => {
                         <input type="text" required />
                         <label>Email or Username</label>
                     </div>
+                    {
+                        emailErr && <div style={errMsgStyle}>{errorIcon} Please enter a valid email address</div>
+                    }
                     <div className="input-field">
                         <input className="password" type="password" required />
                         <span className="show">SHOW</span>
                         <label>Password</label>
                     </div>
+                    {
+                        passErr && <div style={errMsgStyle}>{errorIcon} Password character must be more then 6.</div>
+                    }
                     <button className="primary-btn login-btn" onClick={logInUsingEmailHandler}>Log In</button>
                 </form>
                 <div className="auth">
