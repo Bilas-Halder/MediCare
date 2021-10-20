@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Angela Adams",
+        "field": "Cardiac Surgery",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-1.jpg"
+    },
+    {
+        "name": "Jordan Kelley",
+        "field": "Cardiology",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-2.jpg"
+    },
+    {
+        "name": "Nicole Dixon",
+        "field": "Gynecology",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-3.jpg"
+    },
+    {
+        "name": "Steven Elliott",
+        "field": "Dietetics",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-4.jpg"
+    },
+    {
+        "name": "Jerry Edwards",
+        "field": "Dentistry",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-5.jpg"
+    },
+    {
+        "name": "Megan Gardner",
+        "field": "Endocrinology",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-6.jpg"
+    },
+    {
+        "name": "Donald Williams",
+        "field": "Neurology",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-7.jpg"
+    },
+    {
+        "name": "Marilyn Hanson",
+        "field": "Pediatrics",
+        "imgURL": "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-8.jpg"
+    },
+    {
+        "name": "Grantt Justin",
+        "field": "Cardiology",
+        "imgURL": "https://i.ibb.co/p4tdgW7/doctor-9.jpg"
+    }
+]

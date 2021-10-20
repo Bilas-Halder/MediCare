@@ -1,0 +1,26 @@
+.doctor-img{
+    overflow: hidden;
+    width: min(250px,100%);
+    height: min(250px,100%);
+    border-radius: 50%;
+}
+.doctor-text{
+    width: min(270px,100%);
+    text-align: center;
+}
+.field{
+    color: #0d6efd;
+}
+.card-name{
+    color: #3b3b3b;
+}
+.doctors-social .social{
+    color: #5b5b5b;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.social:hover{
+    color:#4C6EF5;
+}

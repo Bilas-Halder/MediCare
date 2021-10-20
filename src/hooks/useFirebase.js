@@ -8,6 +8,7 @@ const useFirebase = () => {
     const [logged, setLogged] = useState(false);
     const [error, setError] = useState('');
     const [servicesData, setServicesData] = useState([]);
+    const [doctorsData, setDoctorsData] = useState([]);
 
 
     const googleProvider = new GoogleAuthProvider();
@@ -63,7 +64,9 @@ const useFirebase = () => {
         user,
         logged,
         servicesData,
+        doctorsData,
         setServicesData,
+        setDoctorsData,
         setUser,
         setLogged,
         updateName,

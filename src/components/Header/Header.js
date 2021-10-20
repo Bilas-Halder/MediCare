@@ -26,8 +26,11 @@ const Header = () => {
                     <Nav.Link className="text-center nav-btn" as={HashLink} to="/aboutus">About Us</Nav.Link>
 
                     {
-                        user?.email && <>
-                            <Nav.Link className="text-center nav-btn" as={HashLink} to="/home">{user.displayName}</Nav.Link>|</>
+                        user?.email &&
+                        <Nav.Link className="text-center nav-btn" as={HashLink} to="/home">{user.displayName}</Nav.Link>
+                    }{
+                        (user?.email && window.innerWidth >= 776) &&
+                        <>|</>
                     }
 
                     {
