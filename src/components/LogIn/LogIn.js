@@ -10,19 +10,30 @@ export const validEmail = new RegExp(
     '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
 );
 export const validPassword = new RegExp('(?=^.{6,}$)');
+// regular expression for validate email and password
 
 
 const LogIn = () => {
 
-    const { user, setUser, logged, setLogged, logInUsingEmail, logInUsingGoogle } = useAuth();
+    const { user, setUser, setLogged, logInUsingEmail, logInUsingGoogle, loginUsingFacebook, setLoading } = useAuth();
 
     const history = useHistory();
     const location = useLocation();
     const path = location.state?.from?.pathname;
+    // those are for redirecting to the original page where they wanted to go
+
+
+    useEffect(() => {
+        // if someone is not came from other route he will goto home
+        if (!path && user?.email) {
+            history.push("/home");
+        }
+    }, [user]);
 
 
     const [emailErr, setEmailErr] = useState(false);
     const [passErr, setPassErr] = useState(false);
+    const [wrongEmailOrPass, setWrongEmailOrPass] = useState(false);
 
     const errorIcon = useErrorIcon();
     const errMsgStyle = {
@@ -33,7 +44,14 @@ const LogIn = () => {
         color: "#d70000"
     };
 
+    const [showing, setShowing] = useState(false);
+    const isShow = (e) => {
+        e.preventDefault();
+        setShowing(!showing);
+    }
 
+
+    // log in handler for email pass
     const logInUsingEmailHandler = (e) => {
         e.preventDefault();
         const formElement = e.target.parentElement;
@@ -41,6 +59,7 @@ const LogIn = () => {
         const password = formElement.children[1].children[0].value;
 
 
+        // some conditions for showing red notice in the input field
         if (!validEmail.test(email) && !validPassword.test(password)) {
             setEmailErr(true);
             setPassErr(false);
@@ -61,26 +80,45 @@ const LogIn = () => {
             setPassErr(false);
         }
 
-
+        // if everything is ok then we are gonna call firebase to check the user
         logInUsingEmail(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 setUser(user);
                 setLogged(true);
-                history.push(path);
+                setWrongEmailOrPass(false);
                 formElement.reset();
+                history.push(path);
             })
+            .catch(err => {
+                if (err.message === "Firebase: Error (auth/wrong-password).") {
+                    setWrongEmailOrPass(true);
+                }
+                else {
+                    console.log(err);
+                }
+            })
+            .finally(setLoading(false));
     }
 
     const logInUsingGoogleHandler = () => {
         logInUsingGoogle()
             .then(result => {
-                console.log(path);
                 setLogged(true);
-                history.push(path)
-
+                history.push(path);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(setLoading(false));
+    }
+
+    const loginUsingFacebookHandler = () => {
+        loginUsingFacebook()
+            .then(result => {
+                setLogged(true);
+                history.push(path);
+            })
+            .catch(err => console.log(err))
+            .finally(setLoading(false));
     }
 
 
@@ -106,12 +144,17 @@ const LogIn = () => {
                         emailErr && <div style={errMsgStyle}>{errorIcon} Please enter a valid email address</div>
                     }
                     <div className="input-field">
-                        <input className="password" type="password" required />
-                        <span className="show">SHOW</span>
+                        <input className="password" type={showing ? "text" : "password"} required />
+                        <span className="show">
+                            <button onClick={isShow}>{showing ? "Hide" : "Show"}</button>
+                        </span>
                         <label>Password</label>
                     </div>
                     {
                         passErr && <div style={errMsgStyle}>{errorIcon} Password character must be more then 6.</div>
+                    }
+                    {
+                        wrongEmailOrPass && <div style={errMsgStyle}>{errorIcon} Wrong Email or Password | please try again.</div>
                     }
                     <button className="primary-btn login-btn" onClick={logInUsingEmailHandler}>Log In</button>
                 </form>
@@ -119,9 +162,9 @@ const LogIn = () => {
                     Or log in with
                 </div>
                 <div className="links">
-                    <div className="facebook">
+                    <button onClick={loginUsingFacebookHandler} className="facebook">
                         <i className="fab fa-facebook-square"><span>Facebook</span></i>
-                    </div>
+                    </button>
                     <button onClick={logInUsingGoogleHandler} className="google">
                         <i className="fab fa-google-plus-square"><span>Google</span></i>
                     </button>

@@ -6,7 +6,7 @@ import bannerBgImg from '../../images/banner-background.jpg';
 import "./Banner.css";
 
 const Banner = () => {
-    const { user, logged } = useAuth();
+    const { user } = useAuth();
     return (
         <Card className="text-dark card-customize">
             <Card.Img src={bannerBgImg} alt="Card image" />

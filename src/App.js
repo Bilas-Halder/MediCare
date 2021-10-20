@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { initializeApp } from 'firebase/app';
@@ -39,9 +38,9 @@ function App() {
             <Doctors></Doctors>
           </PrivateRoute>
 
-          <Route path="/aboutus" exact >
+          <PrivateRoute path="/aboutus" exact >
             <AboutUs></AboutUs>
-          </Route>
+          </PrivateRoute>
 
           <Route path="/login" exact >
             <LogIn></LogIn>

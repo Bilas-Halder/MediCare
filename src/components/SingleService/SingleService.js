@@ -9,7 +9,7 @@ const SingleService = () => {
     const { id } = useParams();
     const { servicesData } = useAuth();
     const service = servicesData.find(s => s.key === id);
-    console.log(service);
+    // getting data of current route service
     return (
         <div className="mt-5 d-flex align-items-center" style={{ minHeight: "90vh" }}>
             <Container>
@@ -17,16 +17,16 @@ const SingleService = () => {
                     <Col xs={12} sm={12} md={6} lg={6}>
                         <div className="d-flex align-items-center h-100">
                             <div>
-                                <h1>{service.title}</h1>
+                                <h1>{service?.title}</h1>
                                 <p className="care-text">
-                                    {service.description}
+                                    {service?.description}
                                 </p>
                             </div>
                         </div>
                     </Col>
                     <Col xs={12} sm={12} md={6} lg={6}>
                         <div>
-                            <img style={{ width: "100%" }} src={service.imgURL} alt="" />
+                            <img style={{ width: "100%" }} src={service?.imgURL} alt="" />
                         </div>
                     </Col>
                 </Row>

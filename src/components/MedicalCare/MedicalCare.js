@@ -9,7 +9,7 @@ const MedicalCare = () => {
             <Container>
                 <Row>
                     <Col xs={12} sm={12} md={6} lg={6}>
-                        <div className="d-flex align-items-center h-100">
+                        <div className="d-flex align-items-center h-100 my-3 my-lg-0">
                             <div>
                                 <h2 className="care-h2">How To Live a</h2>
                                 <h1 className="care-h1">Healthy Lifestyle?</h1>
@@ -24,7 +24,7 @@ const MedicalCare = () => {
                         </div>
                     </Col>
                     <Col xs={12} sm={12} md={6} lg={6}>
-                        <div>
+                        <div className="my-3 my-lg-0">
                             <img style={{ width: "100%" }} src={careDoc} alt="" />
                         </div>
                     </Col>

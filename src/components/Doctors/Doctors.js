@@ -5,14 +5,7 @@ import Doctor from '../Doctor/Doctor';
 import DoctorsBanner from '../DoctorsBanner/DoctorsBanner';
 
 const Doctors = () => {
-    const a = {
-        name: "Angela Adams",
-        field: "Cardiac Surgery",
-        imgURL: "https://mediclinic.qodeinteractive.com/wp-content/uploads/2017/04/team-member-1.jpg"
-    }
-
     const doctors = useDoctorsData();
-    console.log(doctors);
 
     return (
         <>

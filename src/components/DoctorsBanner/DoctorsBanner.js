@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import bannerBgImg from '../../images/doctors-background.jpg';
 import "../Banner/Banner.css";
-import './DoctorsBanners.css';
+import './DoctorsBanner.css';
 
 const DoctorsBanner = () => {
     return (

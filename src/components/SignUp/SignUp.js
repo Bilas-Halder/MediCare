@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../LogIn/LogIn.css";
 import "./SignUp.css";
 import { useHistory } from "react-router-dom";
@@ -12,14 +12,22 @@ import { useErrorIcon } from '../../hooks/useicons/useIcons';
 const SignUp = () => {
 
 
-    const { user, setUser, signUpUsingEmail, verifyEmail, updateName, setLogged } = useAuth();
+    const { user, setUser, signUpUsingEmail, updateName, setLogged, setLoading } = useAuth();
 
 
     const history = useHistory();
     const location = useLocation();
     const path = location.state?.from;
 
+    useEffect(() => {
+        // if someone is not came from other route he will goto home
+        if (!path && user?.email) {
+            history.push("/home");
+        }
+    }, [user]);
 
+
+    // it is for to hid and show the password
     const [showing, setShowing] = useState(false);
     const isShow = (e) => {
         e.preventDefault();
@@ -48,34 +56,29 @@ const SignUp = () => {
         const rpassword = formElement.children[3].children[0].value;
 
 
-
+        // some conditions for validate email and password using regex
         if (!validEmail.test(email)) {
             setEmailErr(true);
             setPassErr(0);
-            console.log("procced 1");
             return;
         }
         else {
             if (!validPassword.test(password)) {
                 setEmailErr(false);
                 setPassErr(1);
-                console.log("procced 2");
                 return;
             }
             else {
                 setEmailErr(false);
                 if (password === rpassword && password.length >= 6) {
-                    console.log("procced 44", password.length);
                     setPassErr(0);
                 }
                 else {
                     setPassErr(2);
-                    console.log("procced 3");
                     return
                 }
             }
         }
-        console.log("procced");
 
 
         signUpUsingEmail(email, password)
@@ -88,7 +91,8 @@ const SignUp = () => {
                     formElement.reset();
                 });
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .finally(setLoading(false));
     }
 
     return (

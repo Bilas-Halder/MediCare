@@ -5,8 +5,10 @@ const errStyle = {
     fontSize: "1rem"
 }
 
+// exporting some icons together from here
+
 export const useErrorIcon = () => {
-    return <i style={errStyle} class="fas fa-exclamation-circle"></i>;
+    return <i style={errStyle} className="fas fa-exclamation-circle"></i>;
 };
 export const useTriangleErrorIcon = () => {
     return <i style={errStyle} className="fas fa-exclamation-triangle"></i>;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import '../MedicalCare/MedicalCare.css';
 
 const AboutUs = () => {
     return (
@@ -40,7 +41,7 @@ const AboutUs = () => {
                         <Col xs={12} sm={12} md={6} lg={6}>
                             <div className="d-flex align-items-center h-100">
                                 <div>
-                                    <h2 className="care-h2">We Are Your</h2>
+                                    <h2 className="care-h2 my-3 my-lg-0">We Are Your</h2>
                                     <h1 className="care-h1">Partners For Life</h1>
                                     <p className="care-text">
                                         Everyone on our staff is dedicated to patient satisfaction. We always appreciate feedback to help us ensure that we are offering our patients the highest quality services and meeting their needs.No matter a major or a minor injury, Our Medicare is the best location for medical surgeries. Although the environment may not be peaceful, it has top healthcare facilities and experts.

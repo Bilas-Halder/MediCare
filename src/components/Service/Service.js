@@ -1,13 +1,10 @@
 import React from 'react';
 import './Service.css';
-import { Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 const Service = ({ service }) => {
     const { title, iconURL, shortDescription, key } = service;
-    const btnStyle = {
-
-    }
     return (
         <Col xm={12} sm={6} lg={4} className='col-customize'>
             <div className="service-navlink">
